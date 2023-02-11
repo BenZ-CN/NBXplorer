@@ -155,7 +155,10 @@ namespace NBXplorer
 			{
 				await client.CreateWalletAsync(walletName, new CreateWalletOptions()
 				{
-					LoadOnStartup = true,
+                    // DEBUG: Unknown named parameter load_on_startup
+                    // warn: NBXplorer.Indexer.BTC: BTC: Failed to create a RPC wallet with unknown error, skipping...
+                    // NBitcoin.RPC.RPCException: Unknown named parameter load_on_startup
+					// LoadOnStartup = true,
 					Blank = client.Network.ChainName !=	ChainName.Regtest
 				});
 				logger.LogInformation($"{network.CryptoCode}: Created RPC wallet \"{walletName}\"");
